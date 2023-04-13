@@ -2,7 +2,7 @@
 
 Scripts to get information out of the CMS HLT path json
 
-`hlt-2013-datasets.py` produces an output of the format that is needed as the input for the CMS open data record preparation, e.g.
+`hlt-2013-datasets.py` reads the json file into a python dictionary. It produces an output of the format that is needed as the input for the CMS open data record preparation, e.g.
 
 ```
 dataset1,hltpath11
@@ -13,7 +13,7 @@ dataset2,hltpath22
 [...]
 ```
 
-The example is for the 2013 HI data but it can be modified by changing the input file list and the selected year.
+The example is for the 2013 HI-related data but it can be modified by changing the input file list and the selected year.
 
 The relevant part of the json is:
 
@@ -41,5 +41,5 @@ Datasets in above is a list of dictionaries with:
 
 Looking forward to replacing the description above with a json schema...
 
-Note that the json file itself is not in this repository and it is not meant to be accessed by this type of scripts (unless you need something before a proper frontend has been set up).
+The json file itself is not in this repository and it is not meant to be accessed by this type of scripts (unless in need of something before a proper frontend has been set up).
 
