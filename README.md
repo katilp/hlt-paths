@@ -41,5 +41,5 @@ Datasets in above is a list of dictionaries with:
 
 Looking forward to replacing the description above with a json schema...
 
-Note that the json file itself is not in this repository.
+Note that the json file itself is not in this repository and it is not meant to be accessed by this type of scripts (unless you need something before a proper frontend has been set up).
 
