@@ -1,19 +1,25 @@
+# input:
+# - year 2013, 2015, 2016, 2017, 2018 or 2022
+# - dataset listing
 import json
+import sys
 
 def main():
 
-    # get the 2013 dataset list (unique names only)
-    datasets2013 = []
-    for line in open("cms-2013-collision-datasets-hi.txt", "r").readlines():
+    year = int(sys.argv[1])
+    ds_list = sys.argv[2]
+    # get the yearly dataset list (unique names only)
+    datasets_for_year = []
+    for line in open(ds_list, "r").readlines():
         line = line.strip()
         first, dataset, process, tier = line.split("/")
 
         # list only unique entries (different processings have the same hlt path lists)
-        if dataset not in datasets2013:
-            datasets2013.append(dataset)
+        if dataset not in datasets_for_year:
+            datasets_for_year.append(dataset)
 
     # get the hlt information
-    with open('pathInfo_2013-2022.json') as f:
+    with open('pathInfo_2013-2022_withHI.json') as f:
         data = f.read()
             
     # reconstructing the data as a dictionary
@@ -54,16 +60,14 @@ def main():
 
 
     # loop over the dataset to be released:
-    for d in datasets2013:
+    for d in datasets_for_year:
         prev_hlt = ''
         for key, value in hlt.items() :
             one_hlt = value
             years = one_hlt["years"]
-            my_year = 2013
-            # choose only those for with year 2013
-            if 2013 in years:
+            # choose only those for the chosen year
+            if year in years:
                 datasets = one_hlt["datasets"] # this is a list of dictionaries
-                 
                 for i in datasets : # datasets is list, most often one, sometimes more
                 #   for key, value in i.items() : # dictionary contains:
                 #      print (key) # -> datasets, runs
