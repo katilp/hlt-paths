@@ -2,11 +2,7 @@
 
 Scripts to get information out of the CMS HLT path json.
 
-Usage example:
-
-```
-python3 hlt-datasets.py 2015 cms-2015-collision-datasets-hi-ppref.txt > hlt-2015-hi-ppref-datasets.txt
-```
+## Python scripts
 
 `hlt-datasets.py` reads the CMS HLT path json file into a python dictionary. It produces an output of the format that is needed as the input for the CMS open data record preparation, e.g.
 
@@ -19,7 +15,36 @@ dataset2,hltpath22
 [...]
 ```
 
-The repository containes dataset lists for the 2013 HI-related data and the 2015 HI pp reference data, but it can be used with a selected year and a corresponding input dataset list.
+Usage example:
+
+```
+python3 hlt-datasets.py 2015 cms-2015-collision-datasets-hi-ppref.txt > hlt-2015-hi-ppref-datasets.txt
+```
+
+`hlt-trigger-path.py` reads the CMS HLT path json file into a python dictionary. It produces an output of the format that is used for the HLT information snippets for CMS open data, e.g.
+
+```
+High-Level Trigger path information HLT_NNN
+first seen online on run NF
+last seen online on run NL
+V1: (runs NFV1 - NLV1)
+V2: (runs NFV2 - NLV2)
+[...]
+```
+
+The eventual differences in the run range between the output here and those used earlier for CMS open data are due to the requirement of good runs in the input json file.
+
+Usage example:
+
+```
+python3 hlt-trigger-path.py 2013 > hlt-paths-2013.txt
+```
+
+TODO: selecting year does not exclude the versions and runs ranges from other years: to have an output comparable of yearly snippets on the portal, a cut on run range values should be done.
+
+## Inputs
+
+The repository contains dataset lists for the 2013 HI-related data and the 2015 HI pp reference data, but it can be used with any other selected year and a corresponding input dataset list.
 Outputs for these lists have been uploaded to this repository.
 
 
@@ -45,6 +70,11 @@ Datasets (above) is a list of dictionaries with:
   - stream_type
   - path_ps
   - dataset_ps
+- runs (list)
+
+Versions (above) is a list of dictionaries with:
+
+- version (1,2,3...)
 - runs (list)
 
 Looking forward to replacing the description above with a json schema...
