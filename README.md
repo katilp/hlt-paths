@@ -37,7 +37,7 @@ The eventual differences in the run range between the output here and those used
 Usage example:
 
 ```
-python3 hlt-trigger-path.py 2013 > hlt-paths-2013.txt
+python3 hlt-trigger-paths.py 2013 > hlt-paths-2013.txt
 ```
 
 TODO: selecting year does not exclude the versions and runs ranges from other years: to have an output comparable of yearly snippets on the portal, a cut on run range values should be done.

@@ -62,8 +62,8 @@ def main():
                 path=key[:-2]
                 print ("High-Level Trigger path information "+path)
                 runs = one_hlt["runs"]
-                print ("first seen online on run "+str(min(runs)))
-                print ("last seen online on run "+str(max(runs)))
+                print ("first seen online on validated run "+str(min(runs)))
+                print ("last seen online on validated run "+str(max(runs)))
                 versions = one_hlt["versions"]
                 for v in versions :
                 #    print (type(v)) # -> is a dictionary
@@ -71,7 +71,7 @@ def main():
                     nversion = str(v["version"])
                     minrun = str(min(v["runs"]))
                     maxrun = str(max(v["runs"]))
-                    print ("V"+ nversion+": (runs "+minrun+" - "+maxrun+")")
+                    print ("V"+ nversion+": (validated runs "+minrun+" - "+maxrun+")")
 
         
 if __name__ == "__main__":
